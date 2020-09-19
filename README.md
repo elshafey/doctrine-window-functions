@@ -5,7 +5,7 @@ Window functions extension is an extension that enable you to use SQL window fun
 `composer require elshafey/doctrine-window-functions`
 
 ## How To Use
-```
+```php
 // configure the extension first
 $entityManager->getConfiguration()->addCustomStringFunction(
     'WINDOW',
