@@ -28,7 +28,7 @@ class Window extends FunctionNode
 
         if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
             $this->isNativeWindowFuction = true;
-            $this->nativeFunction = $lexer->lookahead['value'];
+            $this->nativeFunction = $lexer->lookahead->value;
             $parser->match(Lexer::T_IDENTIFIER); // to function name
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
             if (!$lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
@@ -39,7 +39,7 @@ class Window extends FunctionNode
             $this->aggregateFunction = $parser->StringPrimary();
         }
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-        if ($lexer->isNextToken(Lexer::T_IDENTIFIER) && strtolower($lexer->lookahead['value']) === 'over') {
+        if ($lexer->isNextToken(Lexer::T_IDENTIFIER) && strtolower($lexer->lookahead->value) === 'over') {
             // $this->overPart = $parser->StringPrimary();
             $this->parseOver($parser);
         } else {
@@ -58,7 +58,7 @@ class Window extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $lexer = $parser->getLexer();
-        if($lexer->isNextToken(Lexer::T_IDENTIFIER)&&strtolower($lexer->lookahead['value'])==='partition'){
+        if($lexer->isNextToken(Lexer::T_IDENTIFIER)&&strtolower($lexer->lookahead->value)==='partition'){
             // $this->partitionByClause=true;
             $this->partitionByFields=$this->parseGrouping($parser,Lexer::T_IDENTIFIER);
         }
