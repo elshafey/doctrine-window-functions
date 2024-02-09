@@ -3,7 +3,8 @@
     "description": "PHP Doctrine Extension that add window functions functionality ",
     "type": "package",
     "require": {
-        "doctrine/orm": "^2.7"
+        "doctrine/orm": "^2.14 || ^3.0",
+        "doctrine/lexer": "^2 || ^3"
     },
     "autoload": {
         "psr-4": {
